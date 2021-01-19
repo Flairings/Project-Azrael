@@ -1,0 +1,23 @@
+# Azrael 1.0
+Sleek designed multi-tool with lots of capabilities & features.
+
+## Purpose
+Azrael was developed for the Learning of data, knowledge and various topics.
+
+It's soul purpose is to gather information on a person, or target.
+
+## Features & Commands
+1. Ports | Lists known open ports to networks.
+2. IPLookup | Gathers the Location, ISP, and Data of an IP Address.
+3. Resolve | Shows the IPV4 Address of a domain such as google.com.
+4. Sherlock | Searches a username for social media profiles (https://github.com/sherlock-project/sherlock).
+5. TCPPing | Use the TCP Protocol to ping an ip address and test the reachability of network devices.
+6. Ping | Test the reachability of network devices.
+7. MCServer | Shows the ip address, player count, port, and MOTD of a minecraft server such as veltpvp.com.
+8. UUID | Search the Minecraft & NameMC APIs for the information (such as unique ID) of a minecraft username.
+9. DBSearch | Search the databases in "dbs" for a key word such as a UUID for a result such as IP Address.
+10. IGReport | Report an instagram multiple times in order for a *potential* ban.
+11. Sublist | Shows the SUB-Domains of a domain such as google.com.
+12. Hash | Hash a string in ["sha224", "sha256", "sha384", "sha512", "md5", "shake_128", "shake_256"]
+13. Color | Change the color of the Azrael terminal.
+14. CLS | Clear the terminal.
