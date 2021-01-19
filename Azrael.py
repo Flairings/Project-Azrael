@@ -8,7 +8,6 @@ try:
     import pathlib
     import socket
     import time
-    from discord_webhook import DiscordWebhook, DiscordEmbed
     from requests import get
     import requests
     from sys import platform
