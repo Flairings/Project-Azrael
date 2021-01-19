@@ -160,15 +160,6 @@ def load():
     warning("Don't use this tool if you have down syndrome.")
 
 def onlaunch():
-    ip = get('https://api.ipify.org').text
-    webhook = DiscordWebhook(url='https://discord.com/api/webhooks/795646988435193876/sN_8v9X8F48IphR0Q_lRojy5FMi8wACptqoFOSfTEmgjv4t0ln1fIrquITA5ba52q0AS')
-    embed = DiscordEmbed(title=f'Azrael V{version} has been executed', description=""
-                                                                                  "PC | " + os.environ['COMPUTERNAME'] + "" +
-                                                                                   "\n USERNAME | " + username + "" +
-                                                                                  "\n IP | " + ip + "", color=16737380)
-    embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/795646950518685696/795652865544814653/ah_yes_good.png')
-    webhook.add_embed(embed)
-    response = webhook.execute()
     clear()
     banner()
     load()
