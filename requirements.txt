@@ -1,0 +1,15 @@
+colorama==0.4.3
+discord-webhook==0.11.0
+Proxy-List-Scrapper==0.2.0
+pyarmor==6.5.6
+pyinstaller==4.1
+PySocks==1.7.1
+pywin32-ctypes==0.2.0
+requests==2.25.1
+pathlib==1.0.1
+argparse~=1.4.0
+dnspython~=2.0.0
+result~=0.5.0
+torrequest~=0.1.0
+setuptools~=51.1.1
+pip~=20.3.3

@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand />
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fbb4b431-b9de-4841-8287-30a08746b0e5" name="Default Changelist" comment="Merge pull request #889 from sherlock-project/csv_directory_fix&#10;&#10;Save csv file to output directory (if specified)." />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="SYNC" />
+  </component>
+  <component name="ProjectId" id="1lTzyCO2rUTNjj5rRWCFxCzEhvB" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JSON" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/obfuscated" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RunManager" selected="Python.Azrael">
+    <configuration name="Azrael" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Azrael" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Administrator\AppData\Local\Programs\Python\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Azrael.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Azreal" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Azreal" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Azreal.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TCP (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Azreal" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TCP.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TCP" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Azreal" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TCP" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="help" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Azreal" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="G:\Private Drive\Personal projects\Azreal\help.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tcp" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Azreal" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tcp.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.Azrael" />
+        <item itemvalue="Python.TCP (1)" />
+        <item itemvalue="Python.TCP" />
+        <item itemvalue="Python.tcp" />
+        <item itemvalue="Python.Azreal" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\Administrator\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fbb4b431-b9de-4841-8287-30a08746b0e5" name="Default Changelist" comment="" />
+      <created>1607636120993</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1607636120993</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Initial commit">
+      <created>1608516239641</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1608516239641</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Initial commit">
+      <created>1608517312038</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1608517312038</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Initial commit">
+      <created>1608850215245</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1608850215246</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Merge pull request #889 from sherlock-project/csv_directory_fix&#10;&#10;Save csv file to output directory (if specified).">
+      <created>1609598905767</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1609598905767</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Merge pull request #889 from sherlock-project/csv_directory_fix&#10;&#10;Save csv file to output directory (if specified).">
+      <created>1609843726253</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1609843726254</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Merge pull request #889 from sherlock-project/csv_directory_fix&#10;&#10;Save csv file to output directory (if specified).">
+      <created>1609844482720</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1609844482720</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Merge pull request #889 from sherlock-project/csv_directory_fix&#10;&#10;Save csv file to output directory (if specified).">
+      <created>1609845215443</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1609845215443</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/User Package/Azrael/core/sherlock" />
+      <path value="$PROJECT_DIR$/core/sherlock" />
+    </ignored-roots>
+    <MESSAGE value="Initial commit" />
+    <MESSAGE value="Merge pull request #889 from sherlock-project/csv_directory_fix&#10;&#10;Save csv file to output directory (if specified)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge pull request #889 from sherlock-project/csv_directory_fix&#10;&#10;Save csv file to output directory (if specified)." />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="759" y="144" key="#Python" timestamp="1608758267094">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="759" y="144" key="#Python/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1608758267094" />
+    <state x="2654" y="310" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1609037523417">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2654" y="310" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1609037523417" />
+    <state x="2237" y="151" width="712" height="736" key="FileChooserDialogImpl" timestamp="1609844464488">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="313" y="167" width="712" height="736" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609844385881" />
+    <state x="2237" y="151" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1609844464488" />
+    <state width="947" height="37" key="GridCell.Tab.0.bottom" timestamp="1609922377578">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="799" height="192" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609849583935" />
+    <state width="947" height="37" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1609922377578" />
+    <state width="947" height="37" key="GridCell.Tab.0.center" timestamp="1609922377578">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="799" height="192" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609849583935" />
+    <state width="947" height="37" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1609922377578" />
+    <state width="947" height="37" key="GridCell.Tab.0.left" timestamp="1609922377578">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="799" height="192" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609849583935" />
+    <state width="947" height="37" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1609922377578" />
+    <state width="947" height="37" key="GridCell.Tab.0.right" timestamp="1609922377578">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="799" height="192" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609849583935" />
+    <state width="947" height="37" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1609922377578" />
+    <state width="1899" height="474" key="GridCell.Tab.1.bottom" timestamp="1609627553564">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="474" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609627553564" />
+    <state width="1899" height="340" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1608370460507" />
+    <state width="1899" height="474" key="GridCell.Tab.1.center" timestamp="1609627553564">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="474" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609627553564" />
+    <state width="1899" height="340" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1608370460507" />
+    <state width="1899" height="474" key="GridCell.Tab.1.left" timestamp="1609627553564">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="474" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609627553564" />
+    <state width="1899" height="340" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1608370460507" />
+    <state width="1899" height="474" key="GridCell.Tab.1.right" timestamp="1609627553564">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="474" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609627553564" />
+    <state width="1899" height="340" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1608370460507" />
+    <state x="658" y="135" key="SettingsEditor" timestamp="1609843661871">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="658" y="135" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609843661871" />
+    <state x="2578" y="135" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1608549185649" />
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1609845255049">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609845255049" />
+    <state x="2472" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1609844495931" />
+    <state x="738" y="172" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1609844413831">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="738" y="172" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609844413831" />
+    <state x="663" y="115" width="938" height="801" key="dock-window-1" timestamp="1609824818064">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="663" y="115" width="938" height="801" key="dock-window-1/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1609824818064" />
+    <state x="736" y="387" width="565" height="284" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1608303023195">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="736" y="387" width="565" height="284" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1608303023195" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1607636706104">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607636706104" />
+    <state x="2710" y="311" width="597" height="418" key="svn.repositoryBrowser" timestamp="1609844467488">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="790" y="311" key="svn.repositoryBrowser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609653248871" />
+    <state x="2710" y="311" width="597" height="418" key="svn.repositoryBrowser/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1609844467488" />
+    <state x="2693" y="283" key="svn4idea.import.options" timestamp="1609844466426">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="773" y="283" key="svn4idea.import.options/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609653244191" />
+    <state x="2693" y="283" key="svn4idea.import.options/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1609844466426" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
