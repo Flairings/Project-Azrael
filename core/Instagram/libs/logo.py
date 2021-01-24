@@ -7,5 +7,4 @@ logo = ""
 
 
 def print_logo():
-    print(Fore.RED + Style.BRIGHT + logo + Style.RESET_ALL + Style.BRIGHT +"\n")
     print(Style.RESET_ALL + Style.BRIGHT, Style.BRIGHT)

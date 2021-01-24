@@ -15,6 +15,8 @@ from libs.utils import print_status
 from libs.utils import parse_proxy_file
 from libs.user_agents import get_user_agent
 
+printerrors = False
+
 page_headers = {
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
     "Accept-Encoding": "gzip, deflate",
@@ -60,21 +62,25 @@ def report_profile_attack(username, proxy):
     try:
         res = ses.get("https://www.facebook.com/", timeout=10)
     except:
-        print_error("Bağlantı hatası oluştu! (FacebookRequestsError)")
+        if printerrors:
+            print_error("Connection error has occurred! (FacebookRequestsError)")
         return
 
     if (res.status_code != 200):
-        print_error("Bağlantı hatası oluştu! (STATUS CODE:", res.status_code, ")")
+        if printerrors:
+            print_error("Connection error has occurred! (STATUS CODE:", res.status_code, ")")
         return
 
     if ('["_js_datr","' not in res.text):
-        print_error("Bağlantı hatası oluştu! (CookieErrorJSDatr)")
+        if printerrors:
+            print_error("Connection error has occurred! (CookieErrorJSDatr)")
         return
     
     try:
         js_datr = res.text.split('["_js_datr","')[1].split('",')[0]
     except:
-        print_error("Bağlantı hatası oluştu! (CookieParsingError)")
+        if printerrors:
+            print_error("Connection error has occurred! (CookieParsingError)")
         return
 
     page_cookies = {
@@ -84,39 +90,48 @@ def report_profile_attack(username, proxy):
     try:
         res = ses.get("https://help.instagram.com/contact/497253480400030", cookies=page_cookies, headers=page_headers, timeout=10)
     except:
-        print_error("Bağlantı hatası oluştu! (InstagramRequestsError)")
+        if printerrors:
+            print_error("Connection error has occurred! (InstagramRequestsError)")
         return
 
     if (res.status_code != 200):
-        print_error("Bağlantı hatası oluştu! (STATUS CODE:", res.status_code, ")")
+        if printerrors:
+            print_error("Connection error has occurred! (STATUS CODE:", res.status_code, ")")
         return
     
     if ("datr" not in res.cookies.get_dict()):
-        print_error("Bağlantı hatası oluştu! (CookieErrorDatr)")
+        if printerrors:
+            print_error("Connection error has occurred! (CookieErrorDatr)")
         return
     
     if ('["LSD",[],{"token":"' not in res.text):
-        print_error("Bağlantı hatası oluştu! (CookieErrorLSD)")
+        if printerrors:
+            print_error("Connection error has occurred! (CookieErrorLSD)")
         return
 
     if ('"__spin_r":' not in res.text):
-        print_error("Bağlantı hatası oluştu! (CookieErrorSpinR)")
+        if printerrors:
+            print_error("Connection error has occurred! (CookieErrorSpinR)")
         return
 
     if ('"__spin_b":' not in res.text):
-        print_error("Bağlantı hatası oluştu! (CookieErrorSpinB)")
+        if printerrors:
+            print_error("Connection error has occurred! (CookieErrorSpinB)")
         return
 
     if ('"__spin_t":' not in res.text):
-        print_error("Bağlantı hatası oluştu! (CookieErrorSpinT)")
+        if printerrors:
+            print_error("Connection error has occurred! (CookieErrorSpinT)")
         return
 
     if ('"server_revision":' not in res.text):
-        print_error("Bağlantı hatası oluştu! (CookieErrorRev)")
+        if printerrors:
+            print_error("Connection error has occurred! (CookieErrorRev)")
         return
 
     if ('"hsi":' not in res.text):
-        print_error("Bağlantı hatası oluştu! (CookieErrorHsi)")
+        if printerrors:
+            print_error("Connection error has occurred! (CookieErrorHsi)")
         return
 
     try:
@@ -128,7 +143,8 @@ def report_profile_attack(username, proxy):
         rev = res.text.split('"server_revision":')[1].split(',')[0].replace('"',"")
         datr = res.cookies.get_dict()["datr"]
     except:
-        print_error("Bağlantı hatası oluştu! (CookieParsingError)")
+        if printerrors:
+            print_error("Connection error has occurred! (CookieParsingError)")
         return
 
     report_cookies = {
@@ -170,11 +186,13 @@ def report_profile_attack(username, proxy):
             timeout=10
         )
     except:
-        print_error("Bağlantı hatası oluştu! (FormRequestsError)")
+        if printerrors:
+            print_error("Connection error has occurred! (FormRequestsError)")
         return
     
     if (res.status_code != 200):
-        print_error("Bağlantı hatası oluştu! (STATUS CODE:", res.status_code, ")")
+        if printerrors:
+            print_error("Connection error has occurred! (STATUS CODE:", res.status_code, ")")
         return
     
     print_success("Successfully reported!")
@@ -195,21 +213,25 @@ def report_video_attack(video_url, proxy):
     try:
         res = ses.get("https://www.facebook.com/", timeout=10)
     except Exception as e:
-        print_error("Bağlantı hatası oluştu! (FacebookRequestsError)", e)
+        if printerrors:
+            print_error("Connection error has occurred! (FacebookRequestsError)", e)
         return
 
     if (res.status_code != 200):
-        print_error("Bağlantı hatası oluştu! (STATUS CODE:", res.status_code, ")")
+        if printerrors:
+            print_error("Connection error has occurred! (STATUS CODE:", res.status_code, ")")
         return
 
     if ('["_js_datr","' not in res.text):
-        print_error("Bağlantı hatası oluştu! (CookieErrorJSDatr)")
+        if printerrors:
+            print_error("Connection error has occurred! (CookieErrorJSDatr)")
         return
     
     try:
         js_datr = res.text.split('["_js_datr","')[1].split('",')[0]
     except:
-        print_error("Bağlantı hatası oluştu! (CookieParsingError)")
+        if printerrors:
+            print_error("Connection error has occurred! (CookieParsingError)")
         return
 
     page_cookies = {
@@ -219,39 +241,48 @@ def report_video_attack(video_url, proxy):
     try:
         res = ses.get("https://help.instagram.com/contact/497253480400030", cookies=page_cookies, headers=page_headers, timeout=10)
     except:
-        print_error("Bağlantı hatası oluştu! (InstagramRequestsError)")
+        if printerrors:
+            print_error("Connection error has occurred! (InstagramRequestsError)")
         return
 
     if (res.status_code != 200):
-        print_error("Bağlantı hatası oluştu! (STATUS CODE:", res.status_code, ")")
+        if printerrors:
+            print_error("Connection error has occurred!! (STATUS CODE:", res.status_code, ")")
         return
     
     if ("datr" not in res.cookies.get_dict()):
-        print_error("Bağlantı hatası oluştu! (CookieErrorDatr)")
+        if printerrors:
+            print_error("Connection error has occurred! (CookieErrorDatr)")
         return
     
     if ('["LSD",[],{"token":"' not in res.text):
-        print_error("Bağlantı hatası oluştu! (CookieErrorLSD)")
+        if printerrors:
+            print_error("Connection error has occurred! (CookieErrorLSD)")
         return
 
     if ('"__spin_r":' not in res.text):
-        print_error("Bağlantı hatası oluştu! (CookieErrorSpinR)")
+        if printerrors:
+            print_error("Connection error has occurred! (CookieErrorSpinR)")
         return
 
     if ('"__spin_b":' not in res.text):
-        print_error("Bağlantı hatası oluştu! (CookieErrorSpinB)")
+        if printerrors:
+            print_error("Connection error has occurred! (CookieErrorSpinB)")
         return
 
     if ('"__spin_t":' not in res.text):
-        print_error("Bağlantı hatası oluştu! (CookieErrorSpinT)")
+        if printerrors:
+            print_error("Connection error has occurred! (CookieErrorSpinT)")
         return
 
     if ('"server_revision":' not in res.text):
-        print_error("Bağlantı hatası oluştu! (CookieErrorRev)")
+        if printerrors:
+            print_error("Connection error has occurred! (CookieErrorRev)")
         return
 
     if ('"hsi":' not in res.text):
-        print_error("Bağlantı hatası oluştu! (CookieErrorHsi)")
+        if printerrors:
+            print_error("Connection error has occurred! (CookieErrorHsi)")
         return
 
     try:
@@ -263,7 +294,8 @@ def report_video_attack(video_url, proxy):
         rev = res.text.split('"server_revision":')[1].split(',')[0].replace('"',"")
         datr = res.cookies.get_dict()["datr"]
     except:
-        print_error("Bağlantı hatası oluştu! (CookieParsingError)")
+        if printerrors:
+            print_error("Connection error has occurred! (CookieParsingError)")
         return
 
     report_cookies = {
@@ -306,11 +338,13 @@ def report_video_attack(video_url, proxy):
             timeout=10
         )
     except:
-        print_error("Bağlantı hatası oluştu! (FormRequestsError)")
+        if printerrors:
+            print_error("Connection error has occurred! (FormRequestsError)")
         return
     
     if (res.status_code != 200):
-        print_error("Bağlantı hatası oluştu! (STATUS CODE:", res.status_code, ")")
+        if printerrors:
+            print_error("Connection error has occurred! (STATUS CODE:", res.status_code, ")")
         return
     
     print_success("Successfully reported!")

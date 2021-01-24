@@ -11,7 +11,7 @@ try:
     from requests import get
     import requests
     from sys import platform
-    from colorama import Fore, init
+    from colorama import Fore, init, Style
 except ImportError:
     os.system("pip3 install -r requirements.txt")
 
@@ -77,8 +77,12 @@ def event(message):
     print(f"{eventcolor}[EVENT] {Fore.LIGHTWHITE_EX}| {message}")
 
 def update():
-    os.system("git pull")
-    event("Successfully updated")
+    try:
+        os.system("git pull")
+        event("Successfully updated")
+        input("Press enter to continue")
+    except:
+        error("Failed to update.")
 
 version = "1.5.0"
 windowsize = "95,22"
@@ -167,10 +171,10 @@ def onlaunch():
 
 def banner():
     clear()
-    print(f"""
+    print(f"""{Style.BRIGHT}
                         	       {color}╔{Fore.LIGHTWHITE_EX}═╗{Fore.LIGHTWHITE_EX}╔{color}═{Fore.LIGHTWHITE_EX}╗{color}╦{Fore.LIGHTWHITE_EX}═{color}╗╔═{Fore.LIGHTWHITE_EX}╗╔{color}═╗{Fore.LIGHTWHITE_EX}╦  
                         	       {color}╠═{Fore.LIGHTWHITE_EX}╣{color}╔{color}═{Fore.LIGHTWHITE_EX}╝╠{Fore.LIGHTWHITE_EX}╦{color}╝{Fore.LIGHTWHITE_EX}╠═{color}╣{Fore.LIGHTWHITE_EX}║╣ ║  
-                        	       ╩ {color}╩{Fore.LIGHTWHITE_EX}╚{color}═╝{Fore.LIGHTWHITE_EX}╩╚{color}═{color}╩{Fore.LIGHTWHITE_EX} ╩{color}╚{Fore.LIGHTWHITE_EX}═{color}╝╩{Fore.LIGHTWHITE_EX}═╝""")
+                        	       ╩ {color}╩{Fore.LIGHTWHITE_EX}╚{color}═╝{Fore.LIGHTWHITE_EX}╩╚{color}═{color}╩{Fore.LIGHTWHITE_EX} ╩{color}╚{Fore.LIGHTWHITE_EX}═{color}╝╩{Fore.LIGHTWHITE_EX}═╝ {Style.RESET_ALL}""")
 
 def ideal():
     global username

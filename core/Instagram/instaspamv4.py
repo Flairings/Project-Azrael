@@ -28,7 +28,7 @@ def chunks(lst, n):
         yield lst[i:i + n]
 
 def profile_attack_process(username, proxy_list):
-    if (len(proxy_list) == 0):
+    if len(proxy_list) == 0:
         for _ in range(10):
             report_profile_attack(username, None)
         return
@@ -37,7 +37,7 @@ def profile_attack_process(username, proxy_list):
         report_profile_attack(username, proxy)
 
 def video_attack_process(video_url, proxy_list):
-    if (len(proxy_list) == 0):
+    if len(proxy_list) == 0:
         for _ in range(10):
             report_video_attack(video_url, None)
         return
@@ -48,12 +48,11 @@ def video_attack_process(video_url, proxy_list):
 def video_attack(proxies):
     video_url = ask_question("Enter the link of the video you want to report")
     print(Style.RESET_ALL)
-    if (len(proxies) == 0):
+    if len(proxies) == 0:
         for k in range(5):
             p = Process(target=video_attack_process, args=(video_url, [],))
             p.start()
             print_status(str(k + 1) + ". Transaction Opened!")
-            if (k == 2): print()
         return
 
     chunk = list(chunks(proxies, 10))
@@ -65,14 +64,13 @@ def video_attack(proxies):
     for proxy_list in chunk:
         p = Process(target=video_attack_process, args=(video_url, proxy_list,))
         p.start()
-        print_status(str(i) + ". Transaction Opened!")
-        if (k == 2): print()
+        print_status(str(i + 1) + ". Transaction Opened!")
         i = i + 1
 
 def profile_attack(proxies):
     username = ask_question("Enter the username of the person you want to report")
     print(Style.RESET_ALL)
-    if (len(proxies) == 0):
+    if len(proxies) == 0:
         for k in range(5):
             p = Process(target=profile_attack_process, args=(username, [],))
             p.start()
@@ -88,8 +86,9 @@ def profile_attack(proxies):
     for proxy_list in chunk:
         p = Process(target=profile_attack_process, args=(username, proxy_list,))
         p.start()
-        print_status(str(i) + ". Transaction Opened!")
-        if (k == 2): print()
+        print_status(str(i + 1) + ". Transaction Opened!")
+        if i == 2:
+            print()
         i = i + 1
 
 def main():
@@ -99,13 +98,13 @@ def main():
 
     proxies = []
 
-    if (ret == "Y" or ret == "y"):
+    if ret == "Y" or ret == "y":
         ret = ask_question("Would you like to collect your proxies from the internet? [Y / N]")
 
-        if (ret == "Y" or ret == "y"):
+        if ret == "Y" or ret == "y":
             print_status("Gathering proxy from the Internet! This may take a while.\n")
             proxies = find_proxies()
-        elif (ret == "N" or ret == "n"):
+        elif ret == "N" or ret == "n":
             print_status("Please have a maximum of 50 proxies in a file!")
             file_path = ask_question("Enter the path to your proxy list")
             proxies = parse_proxy_file(file_path)
@@ -114,13 +113,13 @@ def main():
             exit()
 
         print_success(str(len(proxies)) + " Number of proxy found!\n")
-    elif (ret == "N" or ret == "n"):
+    elif ret == "N" or ret == "n":
         pass
     else:
         print_error("Answer not understood, exiting!")
         exit()
 
-    
+
 
     print("")
     print_status("1 - Report Profile.")
@@ -128,17 +127,17 @@ def main():
     report_choice = ask_question("Please select the complaint method")
     print("")
 
-    if (report_choice.isdigit() == False):
-        print_error("The answer is not understood.")
-        exit(0)
-    
-    if (int(report_choice) > 2 or int(report_choice) == 0):
+    if report_choice.isdigit() == False:
         print_error("The answer is not understood.")
         exit(0)
 
-    if (int(report_choice) == 1):
+    if int(report_choice) > 2 or int(report_choice) == 0:
+        print_error("The answer is not understood.")
+        exit(0)
+
+    if int(report_choice) == 1:
         profile_attack(proxies)
-    elif (int(report_choice) == 2):
+    elif int(report_choice) == 2:
         video_attack(proxies)
 
 if __name__ == "__main__":
