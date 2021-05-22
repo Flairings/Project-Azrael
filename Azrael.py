@@ -1,20 +1,23 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+import sys
+import threading
+from datetime import datetime
+import hashlib
+import json
+import os
+import pathlib
+import socket
+import time
+from requests import get
+import requests
+from sys import platform
+from colorama import Fore, init, Style
 
-try:
-    import hashlib
-    import json
-    import os
-    import pathlib
-    import socket
-    import time
-    from requests import get
-    import requests
-    from sys import platform
-    from colorama import Fore, init, Style
-except ImportError:
-    os.system("pip3 install -r requirements.txt")
+if platform == "win32":
+    from ctypes import wintypes
 
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 ProjectPath = (os.path.dirname(os.path.abspath(__file__)))
 corepath = ProjectPath + "/core"
 sherlockpath = ProjectPath + "/core/sherlock/sherlock"
@@ -22,6 +25,9 @@ pingpath = ProjectPath + "/core/ping"
 dbspath = ProjectPath + "/core/dbs/"
 instagrampath = ProjectPath + "/core/instagram"
 sublisterpath = ProjectPath + "/core/Sublist3r"
+phonefinderpath = ProjectPath + "/core/email2phonenumber"
+ghuntpath = ProjectPath + "/core/GHunt"
+harvesterpath = ProjectPath + "/core/theHarvester"
 
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -84,7 +90,7 @@ def update():
     except:
         error("Failed to update.")
 
-version = "1.5.0"
+version = "1.5.6"
 windowsize = "95,22"
 
 if platform == "win32":
@@ -109,21 +115,16 @@ if platform == "win32":
 
     font = CONSOLE_FONT_INFOEX()
     font.cbSize = ctypes.sizeof(CONSOLE_FONT_INFOEX)
+
     font.nFont = 12
     font.dwFontSize.X = 18
     font.dwFontSize.Y = 24
     font.FontFamily = 54
-    font.FontWeight = 400
+    font.FontWeight = 700
     font.FaceName = "Consolas"
     handle = ctypes.windll.kernel32.GetStdHandle(STD_OUTPUT_HANDLE)
     ctypes.windll.kernel32.SetCurrentConsoleFontEx(
         handle, ctypes.c_long(False), ctypes.pointer(font))
-
-p = requests.post('http://ip-api.com/json/' + "1.1.1.1")
-if '"status":"success"' in p.text:
-    APIConnection = True
-else:
-    APIConnection = False
 
 def load():
     event(f"{Fore.LIGHTWHITE_EX}Checking for updates...")
@@ -131,8 +132,6 @@ def load():
         git = pathlib.Path("git")
         if git.is_dir():
             update()
-    event(f"{Fore.LIGHTWHITE_EX}Checking settings...")
-    time.sleep(0.10)
     event(f"{Fore.LIGHTWHITE_EX}Loading core & modules...")
     time.sleep(0.10)
     event(f"{Fore.LIGHTWHITE_EX}Verifying integrity...")
@@ -144,23 +143,13 @@ def load():
         time.sleep(0.10)
         error(f"{Fore.LIGHTWHITE_EX}Verification failed.")
         print("Please install the core at")
-        print("https://flairings.agency or https://github.com/flairings")
-        time.sleep(10)
+        print("https://github.com/flairings, if you are using a development version contact Flairings#0608")
+        time.sleep(20)
         exit(0)
-
-    if APIConnection:
-        event(f"{Fore.LIGHTWHITE_EX}API: {Fore.GREEN}Connected")
-    else:
-        event(f"{Fore.LIGHTWHITE_EX}API: {Fore.RED}Disconnected")
-    time.sleep(0.10)
     event(f"Logged in as: {Fore.GREEN}{username}")
     if platform == "win32":
         import ctypes
         ctypes.windll.kernel32.SetConsoleTitleW("Azrael - Version " + version + f" | User: {username}")
-    time.sleep(0.10)
-    warning("Sharing access is not prohibited.")
-    warning("This tool is for educational & malicious purposes.")
-    warning("Don't use this tool if you have down syndrome.")
 
 def onlaunch():
     clear()
@@ -171,50 +160,77 @@ def onlaunch():
 
 def banner():
     clear()
-    print(f"""{Style.BRIGHT}
+    if platform == "win32":
+        print(f"""{Style.BRIGHT}
                         	       {color}╔{Fore.LIGHTWHITE_EX}═╗{Fore.LIGHTWHITE_EX}╔{color}═{Fore.LIGHTWHITE_EX}╗{color}╦{Fore.LIGHTWHITE_EX}═{color}╗╔═{Fore.LIGHTWHITE_EX}╗╔{color}═╗{Fore.LIGHTWHITE_EX}╦  
                         	       {color}╠═{Fore.LIGHTWHITE_EX}╣{color}╔{color}═{Fore.LIGHTWHITE_EX}╝╠{Fore.LIGHTWHITE_EX}╦{color}╝{Fore.LIGHTWHITE_EX}╠═{color}╣{Fore.LIGHTWHITE_EX}║╣ ║  
-                        	       ╩ {color}╩{Fore.LIGHTWHITE_EX}╚{color}═╝{Fore.LIGHTWHITE_EX}╩╚{color}═{color}╩{Fore.LIGHTWHITE_EX} ╩{color}╚{Fore.LIGHTWHITE_EX}═{color}╝╩{Fore.LIGHTWHITE_EX}═╝ {Style.RESET_ALL}""")
+                        	       ╩ {color}╩{Fore.LIGHTWHITE_EX}╚{color}═╝{Fore.LIGHTWHITE_EX}╩╚{color}═{color}╩{Fore.LIGHTWHITE_EX} ╩{color}╚{Fore.LIGHTWHITE_EX}═{color}╝╩{Fore.LIGHTWHITE_EX}═╝ {Style.RESET_ALL}
+                            {Fore.LIGHTWHITE_EX}Intelligence & Penetration interface \n""")
 
 def ideal():
+    os.chdir(ProjectPath)
     global username
     print("")
     commandline = (color + username + "@Azrael:~$ ")
     command = input(commandline)
 
     if command.lower().replace(" ","") == "help":
-        print("Use the command 'update' to pull the git repository")
-        print("")
-        print(f"{color}  ┌────────────────────────────────────────────┐")
-        print(f"{color}  │ {Fore.LIGHTWHITE_EX}                   HELP                    {color}│")
-        print(f"{color}  ├────────────────────────────────────────────┤")
-        print(f"{color}  │ {color}PORTS    {Fore.WHITE}| {color}List of all ports               {color}│")
-        print(f"{color}  │ {Fore.LIGHTWHITE_EX}IPLOOKUP {Fore.WHITE}| {Fore.LIGHTWHITE_EX}Searches an IP for details      {color}│")
-        print(f"{color}  │ {color}RESOLVE  {Fore.WHITE}| {color}Shows the ip of a domain        {color}│")
-        print(f"{color}  │ {Fore.LIGHTWHITE_EX}SHERLOCK {Fore.WHITE}| {Fore.LIGHTWHITE_EX}Search the socials of a name    {color}│")
-        print(f"{color}  │ {color}TCPPING  {Fore.WHITE}| {color}TCP pings an ip address         {color}│")
-        print(f"{color}  │ {Fore.LIGHTWHITE_EX}PING     {Fore.WHITE}| {Fore.LIGHTWHITE_EX}Pings an ip address             {color}│")
-        print(f"{color}  │ {color}MCSERVER {Fore.WHITE}| {color}Information about a mc server {color}  │")
-        print(f"{color}  │ {Fore.LIGHTWHITE_EX}UUID     {Fore.WHITE}| {Fore.LIGHTWHITE_EX}Returns UUID of MC username   {color}  │")
-        print(f"{color}  │ {color}DBSEARCH {Fore.WHITE}| {color}Search over 150 MC databases    {color}│")
-        print(f"{color}  │ {Fore.LIGHTWHITE_EX}IGREPORT {Fore.WHITE}| {Fore.LIGHTWHITE_EX}Reports an instagram account    {color}│")
-        print(f"{color}  │ {color}COLOR    {Fore.WHITE}| {color}Change the color of terminal  {color}  │")
-        print(f"{color}  │ {Fore.LIGHTWHITE_EX}CLS      {Fore.WHITE}| {Fore.LIGHTWHITE_EX}Clears the screen               {color}│")
-        print(f"{color}  ├─────────────────────────────────┬──────────┤")
-        print(f"{color}  │{Fore.LIGHTWHITE_EX} All commands must be lowercase! {color}│ Page {Fore.LIGHTWHITE_EX}1{Fore.WHITE}/{Fore.LIGHTWHITE_EX}2{color} │")
-        print(f"{color}  └─────────────────────────────────┴──────────┘")
+        clear()
+        banner()
+        print(f"{color}                       ┌────────────────────────────────────────────┐")
+        print(f"{color}                       │ {Fore.LIGHTWHITE_EX}IPLOOKUP {Fore.WHITE}| {Fore.LIGHTWHITE_EX}Searches an IP for details      {color}│")
+        print(f"{color}                       │ {color}RESOLVE  {Fore.WHITE}| {color}Shows the ip of a domain        {color}│")
+        print(f"{color}                       │ {Fore.LIGHTWHITE_EX}SHERLOCK {Fore.WHITE}| {Fore.LIGHTWHITE_EX}Search the socials of a name    {color}│")
+        print(f"{color}                       │ {color}COLOR    {Fore.WHITE}| {color}Change the color of terminal  {color}  │")
+        print(f"{color}                       │ {Fore.LIGHTWHITE_EX}CLS      {Fore.WHITE}| {Fore.LIGHTWHITE_EX}Clears the screen               {color}│")
+        print(f"{color}                       └────────────────────────────────────────────┘")
+        print(f"{color}                                       ┌────────────┐")
+        print(f"{color}                                       │  {Fore.LIGHTWHITE_EX}Page {Fore.LIGHTWHITE_EX}1/{Fore.LIGHTWHITE_EX}4{color}  │")
+        print(f"{color}                                       └────────────┘")
         ideal()
 
     if command.lower() == "help 2":
-        print("")
-        print(f"{color}  ┌────────────────────────────────────────────┐")
-        print(f"{color}  │ {Fore.LIGHTWHITE_EX}                   HELP                    {color}│")
-        print(f"{color}  ├────────────────────────────────────────────┤")
-        print(f"{color}  │ {Fore.LIGHTWHITE_EX}SUBLIST  {Fore.WHITE}| {Fore.LIGHTWHITE_EX}Show subdomains of a domain     {color}│")
-        print(f"{color}  │ {color}HASH     {Fore.WHITE}| {color}Hash a chosen string            {color}│")
-        print(f"{color}  ├─────────────────────────────────┬──────────┤")
-        print(f"{color}  │{Fore.LIGHTWHITE_EX} All commands must be lowercase! {color}│ Page {Fore.LIGHTWHITE_EX}2{Fore.WHITE}/{Fore.LIGHTWHITE_EX}2{color} │")
-        print(f"{color}  └─────────────────────────────────┴──────────┘")
+        clear()
+        banner()
+        print(f"{color}                       ┌────────────────────────────────────────────┐")
+        print(f"{color}                       │ {Fore.LIGHTWHITE_EX}SUBLIST  {Fore.WHITE}| {Fore.LIGHTWHITE_EX}Shows subdomains of a domain    {color}│")
+        print(f"{color}                       │ {color}HASH     {Fore.WHITE}| {color}Hash a string in algorithms     {color}│")
+        print(f"{color}                       │ {Fore.LIGHTWHITE_EX}PORTSCAN {Fore.WHITE}| {Fore.LIGHTWHITE_EX}Shows the ports of a host       {color}│")
+        print(f"{color}                       │ {color}STEAM    {Fore.WHITE}| {color}Shows info of Steam ID          {color}│")
+        print(f"{color}                       │ {Fore.LIGHTWHITE_EX}IGREPORT {Fore.WHITE}| {Fore.LIGHTWHITE_EX}Reports an instagram account    {color}│")
+        print(f"{color}                       └────────────────────────────────────────────┘")
+        print(f"{color}                                       ┌────────────┐")
+        print(f"{color}                                       │  {Fore.LIGHTWHITE_EX}Page {Fore.LIGHTWHITE_EX}2/{Fore.LIGHTWHITE_EX}4{color}  │")
+        print(f"{color}                                       └────────────┘")
+        ideal()
+
+    if command.lower() == "help 3":
+        clear()
+        banner()
+        print(f"{color}                       ┌────────────────────────────────────────────┐")
+        print(f"{color}                       │ {Fore.LIGHTWHITE_EX}PING     {Fore.WHITE}| {Fore.LIGHTWHITE_EX}Pings an ip address             {color}│")
+        print(f"{color}                       │ {color}TCPPING  {Fore.WHITE}| {color}TCP pings an ip address         {color}│")
+        print(f"{color}                       │ {Fore.LIGHTWHITE_EX}UUID     {Fore.WHITE}| {Fore.LIGHTWHITE_EX}Returns UUID of MC username   {color}  │")
+        print(f"{color}                       │ {color}MCSERVER {Fore.WHITE}| {color}Information about a mc server {color}  │")
+        print(f"{color}                       │ {Fore.LIGHTWHITE_EX}DBSEARCH {Fore.WHITE}| {Fore.LIGHTWHITE_EX}Search over 150 MC databases    {color}│")
+        print(f"{color}                       └────────────────────────────────────────────┘")
+        print(f"{color}                                       ┌────────────┐")
+        print(f"{color}                                       │  {Fore.LIGHTWHITE_EX}Page {Fore.LIGHTWHITE_EX}3/{Fore.LIGHTWHITE_EX}4{color}  │")
+        print(f"{color}                                       └────────────┘")
+        ideal()
+
+    if command.lower() == "help 4":
+        clear()
+        banner()
+        print(f"{color}                       ┌────────────────────────────────────────────┐")
+        print(f"{color}                       │ {Fore.LIGHTWHITE_EX}PHONEBRUTE {Fore.WHITE}| {Fore.LIGHTWHITE_EX}Searches for a phone number   {color}│")
+        print(f"{color}                       │ {color}PORTS      {Fore.WHITE}| {color}List of all ports             {color}│")
+        print(f"{color}                       │ {Fore.LIGHTWHITE_EX}GHUNT      {Fore.WHITE}| {Fore.LIGHTWHITE_EX}Show info from Gmail Account  {color}│")
+        print(f"{color}                       │ {color}HARVESTER  {Fore.WHITE}| {color}Shows subdomains, emails, ips {color}│")
+        print(f"{color}                       └────────────────────────────────────────────┘")
+        print(f"{color}                                       ┌────────────┐")
+        print(f"{color}                                       │  {Fore.LIGHTWHITE_EX}Page {Fore.LIGHTWHITE_EX}4/{Fore.LIGHTWHITE_EX}4{color}  │")
+        print(f"{color}                                       └────────────┘")
         ideal()
 
     if command.lower().replace(" ","") == "ports":
@@ -259,12 +275,21 @@ def ideal():
         hostname = str(input("domain: "))
         try:
             ip = socket.gethostbyname(hostname)
-            print("")
-            print(f"┌──────────────────────────────────────")
-            print(f"│    {Fore.LIGHTWHITE_EX}RESOLVE {Fore.WHITE}| {Fore.LIGHTWHITE_EX}{hostname}{color}")
-            print(f"├──────────────────────────────────────")
-            print(f"│ {Fore.LIGHTWHITE_EX}{hostname} {Fore.WHITE}| {Fore.LIGHTWHITE_EX}{ip}{color}")
-            print(f"└──────────────────────────────────────")
+            pr = requests.post('http://ip-api.com/json/' + ip)
+            if '"status":"success"' in pr.text:
+                print("")
+                print(f"┌──────────────────────────────────────")
+                print(f"│    {Fore.LIGHTWHITE_EX}RESOLVE {Fore.WHITE}| {Fore.LIGHTWHITE_EX}{hostname}{color}")
+                print(f"├──────────────────────────────────────")
+                print(f"│ {Fore.LIGHTWHITE_EX}{hostname} {Fore.WHITE}| {Fore.LIGHTWHITE_EX}{ip}{color}")
+                print(f"│ {Fore.LIGHTWHITE_EX}Country {Fore.WHITE}| {Fore.LIGHTWHITE_EX}{pr.json()['country']} {color}")
+                print(f"│ {Fore.LIGHTWHITE_EX}Country Code {Fore.WHITE}| {Fore.LIGHTWHITE_EX}{pr.json()['countryCode']} {color}")
+                print(f"│ {Fore.LIGHTWHITE_EX}Region Name {Fore.WHITE}| {Fore.LIGHTWHITE_EX}{pr.json()['regionName']} {color}")
+                print(f"│ {Fore.LIGHTWHITE_EX}City {Fore.WHITE}| {Fore.LIGHTWHITE_EX}{pr.json()['city']}  {color}")
+                print(f"│ {Fore.LIGHTWHITE_EX}Timezone {Fore.WHITE}| {Fore.LIGHTWHITE_EX}{pr.json()['timezone']}   {color}")
+                print(f"│ {Fore.LIGHTWHITE_EX}Zip {Fore.WHITE}| {Fore.LIGHTWHITE_EX}{pr.json()['zip']}   {color}")
+                print(f"│ {Fore.LIGHTWHITE_EX}ISP {Fore.WHITE}| {Fore.LIGHTWHITE_EX}{pr.json()['isp']}  {color}")
+                print(f"└───────────────────────────────────")
         except socket.gaierror:
             warning(f"{Fore.LIGHTRED_EX} Domain could not be found.")
         ideal()
@@ -332,10 +357,12 @@ def ideal():
         domain = str(input("Domain: "))
         req = requests.get(f'https://api.mcsrvstat.us/2/{domain}')
         if 'online":true' in req.text:
+            pr = requests.post('http://ip-api.com/json/' + req.json()['ip'])
             print("")
             print(f"{color}┌────────────────────────────────────")
             print(f"{color}│ {Fore.LIGHTWHITE_EX}MC Server Information {Fore.WHITE}| {Fore.LIGHTWHITE_EX}{domain}")
             print(f"{color}│ {Fore.LIGHTWHITE_EX}IP: {req.json()['ip']}")
+            print(f"{color}│ {Fore.LIGHTWHITE_EX}ISP: {Fore.LIGHTWHITE_EX}{pr.json()['isp']} ")
             print(f"{color}│ {Fore.LIGHTWHITE_EX}Port: {req.json()['port']}")
             print(f"{color}│ {Fore.LIGHTWHITE_EX}Version: {req.json()['version']}")
             print(f"{color}│ {Fore.LIGHTWHITE_EX}Players: {req.json()['players']['online']}/{req.json()['players']['max']}")
@@ -368,6 +395,33 @@ def ideal():
                 ideal()
         else:
             event("Invalid username or ID.")
+            ideal()
+
+    if command.lower().replace(" ","") == "steam":
+        names = []
+        names.clear()
+        steamID = input("ID: ")
+        req = requests.get(f'https://playerdb.co/api/player/steam/{steamID}')
+        if 'code":"player.found"' in req.text:
+            try:
+                print("")
+                print(f"{color}┌────────────────────────────────────")
+                print(f"{color}│ {Fore.LIGHTWHITE_EX}{steamID} {Fore.WHITE}| {Fore.LIGHTWHITE_EX}ID Information")
+                print(f"{color}├────────────────────────────────────")
+                print(f"{color}│ {Fore.LIGHTWHITE_EX}Username: {req.json()['data']['player']['username']}")
+                print(f"{color}│ {Fore.LIGHTWHITE_EX}Real name: {req.json()['data']['player']['meta']['realname']}")
+                print(f"{color}│ {Fore.LIGHTWHITE_EX}Personaname: {req.json()['data']['player']['meta']['personaname']}")
+                print(f"{color}│ {Fore.LIGHTWHITE_EX}Avatar URL: {req.json()['data']['player']['avatar']}")
+                print(f"{color}│ {Fore.LIGHTWHITE_EX}Country: {req.json()['data']['player']['meta']['loccountrycode']}")
+                print(f"{color}│ {Fore.LIGHTWHITE_EX}State: {req.json()['data']['player']['meta']['locstatecode']}")
+                print(f"{color}└───────────────────────────────────")
+                ideal()
+            except Exception as e:
+               # error(e)
+                pass
+                ideal()
+        else:
+            event("Invalid ID.")
             ideal()
 
     if command.lower().replace(" ","") == "dbsearch":
@@ -450,9 +504,90 @@ def ideal():
         banner()
         ideal()
 
-    if command.lower().replace(" ","") == "hdash":
-        hash_str = input("mad ting sad ting: ")
-        banner()
+    def TCP_connect(ip, port_number, delay, output):
+        TCPsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        TCPsock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        TCPsock.settimeout(delay)
+        try:
+            TCPsock.connect((ip, port_number))
+            output[port_number] = 'Listening'
+        except:
+            output[port_number] = ''
+
+    def scan_ports(host_ip, delay):
+
+        threads = []  # To run TCP_connect concurrently
+        output = {}  # For printing purposes
+
+        # Spawning threads to scan ports
+        for i in range(10000):
+            t = threading.Thread(target=TCP_connect, args=(host_ip, i, delay, output))
+            threads.append(t)
+
+        # Starting threads
+        for i in range(10000):
+            threads[i].start()
+
+        # Locking the main thread until all threads complete
+        for i in range(10000):
+            threads[i].join()
+
+        # Printing listening ports from small to large
+        for i in range(10000):
+            if output[i] == 'Open':
+                print(str(i) + ': ' + output[i])
+
+    if command.lower().replace(" ","") == "portscan":
+        host = input("host: ")
+        event(Fore.LIGHTWHITE_EX + "Scanning ports... ")
+        os.system(f"nmap -F {host}")
+        event(Fore.LIGHTWHITE_EX + "Process complete")
+        ideal()
+
+    if command.lower().replace(" ","") == "phonebrute":
+        email = input("email: ")
+        os.chdir(phonefinderpath)
+        time.sleep(0.500)
+        print("")
+        event(Fore.LIGHTWHITE_EX + f"Beginning phone brute force {Style.RESET_ALL}")
+        print("")
+        os.system(f"python email2phonenumber.py scrape -e {email}")
+        print("")
+        event(Fore.LIGHTWHITE_EX + "Process complete")
+        ideal()
+
+    if command.lower().replace(" ","") == "ghunt":
+        email = input("gmail: ")
+        os.chdir(ghuntpath)
+        time.sleep(0.500)
+        print("")
+        event(Fore.LIGHTWHITE_EX + f"Beginning google account hunter {Style.RESET_ALL}")
+        print("")
+        os.system(f"python ghunt.py email {email}")
+        print("")
+        event(Fore.LIGHTWHITE_EX + "Process complete")
+        ideal()
+
+    if command.lower().replace(" ","") == "nmap":
+        host = input("host: ")
+        time.sleep(0.500)
+        print("")
+        event(Fore.LIGHTWHITE_EX + f"Beginning nmap type intense {Style.RESET_ALL}")
+        print("")
+        os.system(f"nmap -T4 -A -v {host}")
+        print("")
+        event(Fore.LIGHTWHITE_EX + "Process complete")
+        ideal()
+
+    if command.lower().replace(" ","") == "harvester":
+        host = input("host: ")
+        os.chdir(harvesterpath)
+        time.sleep(0.500)
+        print("")
+        event(Fore.LIGHTWHITE_EX + f"Beginning harvester {Style.RESET_ALL}")
+        os.system(f"python theHarvester.py -d {host} -b google")
+        print("")
+        event(Fore.LIGHTWHITE_EX + "Process complete")
         ideal()
 
     def restart():
@@ -495,6 +630,12 @@ def ideal():
     if command.lower().replace(" ","") == "update":
         update()
         banner()
+        ideal()
+
+    if command.lower().replace(" ","") == "home":
+        clear()
+        banner()
+        load()
         ideal()
 
     else:
